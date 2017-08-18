@@ -1,0 +1,29 @@
+﻿@model Assignment2.Models.Comment
+
+<form asp-controller="Home" asp-action="CreateComment">
+    <input type="hidden" name="BlogPostId" asp-for="BlogPostId" value="@ViewData["BlogPostId"]" />
+    <table>
+        <tbody>
+            <tr>
+                <td><textarea rows="3" cols="90" name="Content" asp-for="Content" placeholder="Enter a comment..."></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="Rating"> Rating: </label></td>
+            </tr>
+            <tr>
+                <td>
+                    <select asp-for="Rating" name="Rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="submit" value="Post" /></td>
+            </tr>
+        </tbody>
+    </table>
+</form>

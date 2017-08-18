@@ -1,0 +1,55 @@
+﻿@model Assignment2.Models.BlogPost
+@using Assignment2.Models
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Edit Blog Post";
+    ViewData["BlogPostId"] = Model.BlogPostId;
+}
+
+<div class="row">
+    <div class="col-xs-8">
+        <div class="panel panel-border-color">
+            <div class="panel-heading">
+                <h2>Edit Blog Post</h2>
+            </div>
+            <div class="panel-body">
+                @Html.Partial("AddPhoto", new Photo())
+                @if (Model.Photos != null || Model.Photos.Count() > 0)
+                {
+                    <div class="photos">
+                        @foreach (var item in Model.Photos.Reverse())
+                        {
+                            <img src="@item.Url" />
+                            <a asp-controller="Home" asp-action="DeletePhoto" asp-route-id="@item.PhotoId" onclick="return confirm('Are you sure you want to delete this image?');">Delete</a>
+                        }
+                    </div>
+                }
+                <form asp-controller="Home" asp-action="ModifyBlogPost">
+                    <input type="hidden" name="BlogPostId" asp-for="BlogPostId" />
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label for="Title">Title:</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="Title" asp-for="Title" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Content">Content:</label></td>
+                            </tr>
+                            <tr>
+                                <td><textarea rows="5" cols="90" name="Content" asp-for="Content" placeholder="Blog post content..."></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><input class="btn" type="submit" value="Post" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

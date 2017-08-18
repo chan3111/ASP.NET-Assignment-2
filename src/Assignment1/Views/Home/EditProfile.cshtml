@@ -1,0 +1,81 @@
+﻿@model Assignment2.Models.User
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Edit Profile";
+}
+
+
+<div class="row">
+    <div class="col-xs-5">
+        <div class="panel panel-border-color">
+            <div class="panel-heading">
+                <h2>Edit Profile</h2>
+            </div>
+            <div class="panel-body">
+                <form asp-controller="Home" asp-action="ModifyProfile">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label for="FirstName">First Name:</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="FirstName" asp-for="FirstName" value="@Model.FirstName"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="LastName">Last Name:</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="LastName" asp-for="LastName" value="@Model.LastName"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="EmailAddress">Email Address:</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="email" name="EmailAddress" asp-for="EmailAddress" value="@Model.EmailAddress"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Password">Password:</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="password" name="Password" asp-for="Password" value="@Model.Password"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="DateOfBirth">Date Of Birth:</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="date" name="DateOfBirth" asp-for="DateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")"/></td>
+                            <tr>
+                                <td><label for="City">City:</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="City" asp-for="City" value="@Model.City"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Address">Address:</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="Address" asp-for="Address" value="@Model.Address"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="PostalCode">Postal Code:</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="PostalCode" asp-for="PostalCode" value="@Model.PostalCode" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Country">Country:</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="Country" asp-for="Country" value="@Model.Country" /></td>
+                            </tr>
+                            <tr>
+                                <td><input class="btn" type="submit" value="Edit Profile" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

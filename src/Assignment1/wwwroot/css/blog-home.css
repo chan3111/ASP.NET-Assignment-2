@@ -1,0 +1,36 @@
+/*!
+ * Start Bootstrap - Blog Home (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+td input, select {
+    margin-bottom: 15px;
+}
+
+.panel-border-color {
+    border-color: rgba(0,0,0,0.12);
+}
+
+.nav > li > p {
+    padding: 15px 15px;
+    margin: 0px;
+    color: #9d9d9d;
+}
+
+.comments {
+    margin-bottom: 15px;
+}
+
+.photos {
+    margin-bottom: 10px;
+}
+
+.photos > img {
+    width:200px;
+    height:150px;
+}

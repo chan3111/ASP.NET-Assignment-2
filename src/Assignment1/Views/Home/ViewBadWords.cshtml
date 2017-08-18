@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Assignment2.Models.BadWord>
+@using Assignment2.Models
+
+@{ 
+    Layout = "_Layout";
+    ViewData["Title"] = "Bad Words";
+}
+
+
+<div class="row">
+    <div class="col-xs-5">
+        <div class="panel panel-border-color">
+            <div class="panel-heading">
+                <h2>Add Bad Word</h2>
+            </div>
+            <div class="panel-body">
+                @Html.Partial("AddBadWord", new BadWord())
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-5">
+        <div class="panel panel-border-color">
+            <div class="panel-heading">
+                <h2>Bad Words</h2>
+            </div>
+            <div class="panel-body">
+                @if (Model != null || Model.Count() > 0)
+                {
+                    <ul>
+                        @foreach (var item in Model.Reverse())
+                        {
+
+                        <li>@item.Word <a asp-controller="Home" asp-action="DeleteBadWord" asp-route-id="@item.BadWordId"> Delete </a></li>
+                        }
+                   </ul>
+                }
+            </div>
+        </div>
+    </div>
+</div>

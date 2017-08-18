@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Assignment2.Models.BlogPost>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            Blog Posts
+        </h1>
+
+        @if (Model != null || Model.Count() > 0)
+        {
+            foreach (var item in Model.Reverse())
+            {
+                if (@item.IsAvailable)
+                {
+        <h2>
+            <a asp-controller="Home" asp-action="DisplayFullBlogPost" asp-route-id="@item.BlogPostId">@item.Title</a>
+        </h2>
+        <p class="lead">
+            by @item.User.FirstName @item.User.LastName &lt;@item.User.EmailAddress&gt;
+        </p>
+        <p><span class="glyphicon glyphicon-time"></span> Posted on @item.Posted</p>
+        <hr>
+        <p>@item.ShortDescription</p>
+        <hr />
+                }
+            }
+        }
+    </div>
+</div>

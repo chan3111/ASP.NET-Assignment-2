@@ -1,0 +1,64 @@
+﻿@model Assignment2.Models.BlogPost
+@using Assignment2.Models
+@using Microsoft.AspNetCore.Http
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Model.Title;
+    ViewData["BlogPostId"] = Model.BlogPostId;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            @Model.Title
+            
+        </h1>
+        @if (!string.IsNullOrEmpty(Context.Session.GetString("emailAddress")))
+        {
+            @if (Context.Session.GetString("roleId").Equals("2"))
+            {
+                <a asp-controller="Home" asp-action="EditBlogPost" asp-route-id="@Model.BlogPostId">Edit</a>
+                <a asp-controller="Home" asp-action="DeleteBlogPost" asp-route-id="@Model.BlogPostId">Delete</a>
+            }
+        }
+        <p class="lead">
+            by @Model.User.FirstName @Model.User.LastName &nbsp;&lt;@Model.User.EmailAddress&gt;
+        </p>
+        <p><span class="glyphicon glyphicon-time"></span> Posted on @Model.Posted</p>
+        <hr />
+        @if (Model.Photos != null || Model.Photos.Count() > 0)
+        {
+            <div class="photos">
+                @foreach (var item in Model.Photos.Reverse())
+                {
+                    <img src="@item.Url" />
+
+                }
+            </div>
+        }
+        <p>@Html.Raw(Model.Content)</p>
+        <hr />
+        <h3>Comments</h3>
+
+        @if (Model.Comments != null || Model.Comments.Count() > 0)
+        {
+            foreach (var item in Model.Comments.Reverse())
+            {
+                <div class="comments">
+                    <p><strong>@item.User.FirstName @item.User.LastName</strong> &nbsp;&lt;@item.User.EmailAddress&gt; Blog Post Rating: @item.Rating/5</p>
+                    <p>@item.Content</p>
+                </div>
+            }
+        }
+
+        @if (!string.IsNullOrEmpty(Context.Session.GetString("emailAddress")))
+        {
+            @Html.Partial("AddComment", new Comment())
+        }
+        else
+        {
+            <p>To add a comment <a asp-controller="Home" asp-action="Register">Register</a> or <a asp-controller="Home" asp-action="Login">Login</a></p>
+
+        }
+    </div>
+</div>

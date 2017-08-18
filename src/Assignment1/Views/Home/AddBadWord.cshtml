@@ -1,0 +1,17 @@
+﻿@model Assignment2.Models.BadWord
+
+<form asp-controller="Home" asp-action="AddBadWord">
+    <table>
+        <tbody>
+            <tr>
+                <td><label for="Word">Word:</label></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="Word" asp-for="Word" /></td>
+            </tr>
+            <tr>
+                <td><input class="btn" type="submit" value="Add Word" /></td>
+            </tr>
+        </tbody>
+    </table>
+</form>

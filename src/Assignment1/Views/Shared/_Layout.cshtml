@@ -1,0 +1,146 @@
+﻿<!-- Name: Chandler Newman-Reed 
+     Email: newm0060@algonquinlive.com
+     Student Number: 040772021    
+-->
+
+@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/css/blog-home.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Assignment 2</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    @if (!string.IsNullOrEmpty(Context.Session.GetString("emailAddress")))
+                    {
+                        @if (Context.Session.GetString("roleId").Equals("2"))
+                        {
+                            <li>
+                                <a asp-controller="Home" asp-action="AddBlogPost">Add Blog Post</a>
+                            </li>
+                        }
+                    }
+                    <li class="nav-divider">
+                    </li>
+                    <li>
+                        <a href="#">Login</a>
+                    </li>
+                    <li>
+                        <a href="#">Register</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav><nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Assignment 2</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    @if (!string.IsNullOrEmpty(Context.Session.GetString("emailAddress")))
+                    {
+                        @if (Context.Session.GetString("roleId").Equals("2"))
+                        {
+                            <li>
+                                <a asp-controller="Home" asp-action="AddBlogPost">Add Blog Post</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="ViewBadWords">View Bad Words</a>
+                            </li>
+                        }
+                    }
+                </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        @if (string.IsNullOrEmpty(Context.Session.GetString("emailAddress")))
+                        {
+                            <li>
+                                <a asp-controller="Home" asp-action="Login">Login</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Register">Register</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a asp-controller="Home" asp-action="EditProfile" asp-route-id="@Context.Session.GetInt32("userId")">Edit Profile</a>
+                            </li>
+                            <li>
+                                <p>Welcome @Context.Session.GetString("firstName") @Context.Session.GetString("lastName")</p>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            <!-- /.navbar-collapse -->
+            </div>
+        <!-- /.container -->
+        </nav>
+        <div class="container">
+            @RenderBody()
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr />
+                        <p>Copyright &copy; Chandler Newman-Reed 2016</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    <!-- jQuery -->
+                    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+                    <script src="js/bootstrap.min.js"></script>
+                </body>
+</html>

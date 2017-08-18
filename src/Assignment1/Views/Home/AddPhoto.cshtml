@@ -1,0 +1,14 @@
+﻿@model Assignment2.Models.Photo
+
+<form asp-controller="Home" asp-action="UploadPhoto" enctype="multipart/form-data">
+    <table>
+        <tbody>
+            <tr>
+                <td><input type="file" name="files" /></td>
+                <td style="display:block"><button name="upload">Upload Now</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="hidden" name="BlogPostId" asp-for="BlogPostId" value="@ViewData["BlogPostId"]" />
+    
+</form>
